@@ -1,0 +1,35 @@
+[package]
+name = "walle-v11"
+version = "0.5.0"
+edition = "2021"
+license = "MIT"
+description = "Onebot Lib in Rust"
+authors = ["Abrahum<307887491@qq.com>"]
+homepage = "https://github.com/abrahum/Walle-core"
+
+[package.metadata.docs.rs]
+all-features = true
+rustdoc-args = ["--cfg", "docsrs"]
+
+[features]
+tokio-rt = ["tokio/rt-multi-thread"]
+impl-obc = []
+
+[dependencies]
+serde = { version = "1", features = ["derive"] }
+tokio = "1"
+tokio-tungstenite = "0.17"
+futures-util = "0.3"
+tracing = "0.1"
+
+[dev-dependencies]
+tracing-subscriber = { version = "0.3", features = ["env-filter", "fmt"] }
+
+[dependencies.walle-core]
+git = "https://github.com/onebot-walle/walle-core.git"
+# version = "0.6.1"
+
+[[example]]
+name = "app"
+crate-type = ["bin"]
+required-features = ["tokio-rt"]
