@@ -1,16 +1,16 @@
-use walle_core::segment::{Mention, MentionAll, MessageSegment, Segments};
+use walle_core::segment::{Mention, MentionAll, MsgSegment, Segments};
 use walle_core::util::{Value, ValueMapExt};
 use walle_core::value_map;
 
-pub fn to_11(mut seg: MessageSegment) -> MessageSegment {
+pub fn to_11(mut seg: MsgSegment) -> MsgSegment {
     match seg.ty.as_str() {
-        "mention" => MessageSegment {
+        "mention" => MsgSegment {
             ty: "at".to_string(),
             data: value_map! {
                 "qq": seg.data.remove_downcast::<String>("user_id").unwrap_or_default()
             },
         },
-        "mention_all" => MessageSegment {
+        "mention_all" => MsgSegment {
             ty: "at".to_string(),
             data: value_map! {
                 "qq": "all"
@@ -26,7 +26,7 @@ pub fn segs_to_11(segs: &mut Value) {
     }
 }
 
-pub fn to_12(mut seg: MessageSegment) -> MessageSegment {
+pub fn to_12(mut seg: MsgSegment) -> MsgSegment {
     match seg.ty.as_str() {
         "qq" => match seg
             .data

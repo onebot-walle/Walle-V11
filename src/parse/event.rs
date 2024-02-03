@@ -23,7 +23,7 @@ pub fn to_11(mut event: V12Event) -> V11Event {
     }
     V11Event {
         time: event.time as u64,
-        self_id: event.self_id.parse().unwrap_or_default(),
+        self_id: 0i64,
         post_type: event.ty,
         content: event.extra,
     }
@@ -36,9 +36,6 @@ pub fn to_12(mut event: V11Event) -> V12Event {
     }
     V12Event {
         id: "".to_string(), // todo
-        implt: "Walle-V11".to_string(),
-        platform: "OneBot V11".to_string(),
-        self_id: event.self_id.to_string(),
         time: event.time as f64,
         detail_type: event
             .content

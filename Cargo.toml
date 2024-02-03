@@ -11,14 +11,10 @@ homepage = "https://github.com/onebot-walle/walle-v11"
 all-features = true
 rustdoc-args = ["--cfg", "docsrs"]
 
-[features]
-tokio-rt = ["tokio/rt-multi-thread"]
-impl-obc = []
-
 [dependencies]
 serde = { version = "1", features = ["derive"] }
 tokio = "1"
-tokio-tungstenite = "0.17"
+tokio-tungstenite = "0.21"
 futures-util = "0.3"
 tracing = "0.1"
 
@@ -28,8 +24,3 @@ tracing-subscriber = { version = "0.3", features = ["env-filter", "fmt"] }
 [dependencies.walle-core]
 git = "https://github.com/onebot-walle/walle-core.git"
 # version = "0.6.1"
-
-[[example]]
-name = "app"
-crate-type = ["bin"]
-required-features = ["tokio-rt"]
